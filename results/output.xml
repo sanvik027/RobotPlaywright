@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.1 on win32)" generated="2026-10-25T18:43:00.935866" rpa="false" schemaversion="5">
+<suite id="s1" name="Robot Playwright" source="C:\robot_playwright">
+<suite id="s1-s1" name="Tests" source="C:\robot_playwright\tests">
+<suite id="s1-s1-s1" name="Ui" source="C:\robot_playwright\tests\ui">
+<kw name="Run Keywords" owner="BuiltIn" type="SETUP">
+<kw name="Start Browser Session" owner="browser_fixtures">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-10-25T18:43:01.550449" level="INFO">Launching browser: chromium</msg>
+<arg>Launching browser: ${BROWSER}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-10-25T18:43:01.549877" elapsed="0.001702"/>
+</kw>
+<kw name="New Browser" owner="Browser">
+<msg time="2026-10-25T18:43:01.556261" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\robot_playwright\\results\\browser\\traces\\temp\\8464440b-173e-47dd-b867-2ebe9966bae5"}</msg>
+<msg time="2026-10-25T18:43:02.018589" level="INFO">Starting Browser process C:\Users\chiranjibi\AppData\Local\Programs\Python\Python313\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:58668</msg>
+<msg time="2026-10-25T18:43:05.282586" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\robot_playwright\\results\\browser\\traces\\temp\\8464440b-173e-47dd-b867-2ebe9966bae5"}</msg>
+<arg>${BROWSER}</arg>
+<arg>headless=${HEADLESS}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2026-10-25T18:43:01.552503" elapsed="3.730661"/>
+</kw>
+<kw name="Set Browser Timeout" owner="Browser">
+<arg>${TIMEOUT}</arg>
+<tag>Config</tag>
+<tag>Setter</tag>
+<doc>Sets the timeout used by most input and getter keywords.</doc>
+<status status="PASS" start="2026-10-25T18:43:05.283584" elapsed="0.006282"/>
+</kw>
+<doc>Opens the browser once per suite. (Like scope="session")</doc>
+<status status="PASS" start="2026-10-25T18:43:01.548721" elapsed="3.741487"/>
+</kw>
+<kw name="Load Registration Data" owner="data_fixtures">
+<kw name="Get File" owner="OperatingSystem">
+<msg time="2026-10-25T18:43:05.291617" level="INFO" html="true">Getting file '&lt;a href="file://C:\robot_playwright\data\registration_data.yaml"&gt;C:\robot_playwright\data\registration_data.yaml&lt;/a&gt;'.</msg>
+<msg time="2026-10-25T18:43:05.292311" level="INFO">${yaml_string} = # Test Data for Registration Flow
+user:
+  password: "TestPassword123"
+  dob_day: 10
+  dob_month: 5
+  dob_year: 1995
+  first_name: "Test"
+  last_name: "User"
+  company: "TestCompany"
+  address1: "123 M...</msg>
+<var>${yaml_string}</var>
+<arg>${DATA_FILE}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<status status="PASS" start="2026-10-25T18:43:05.291221" elapsed="0.001545"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-25T18:43:05.296568" level="INFO">${yaml_data} = {'user': {'password': 'TestPassword123', 'dob_day': 10, 'dob_month': 5, 'dob_year': 1995, 'first_name': 'Test', 'last_name': 'User', 'company': 'TestCompany', 'address1': '123 Main Street', 'address2'...</msg>
+<var>${yaml_data}</var>
+<arg>yaml.safe_load($yaml_string)</arg>
+<arg>modules=yaml</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-25T18:43:05.293242" elapsed="0.003845"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-10-25T18:43:05.298465" level="INFO">${USER} = {'password': 'TestPassword123', 'dob_day': 10, 'dob_month': 5, 'dob_year': 1995, 'first_name': 'Test', 'last_name': 'User', 'company': 'TestCompany', 'address1': '123 Main Street', 'address2': 'Apt 4B...</msg>
+<arg>${USER}</arg>
+<arg>${yaml_data}[user]</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-10-25T18:43:05.297473" elapsed="0.001631"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Loaded User Data: ${USER}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-25T18:43:05.299489" elapsed="0.001048"/>
+</kw>
+<doc>Load registration data from YAML file</doc>
+<status status="PASS" start="2026-10-25T18:43:05.290596" elapsed="0.010408"/>
+</kw>
+<arg>Start Browser Session</arg>
+<arg>AND</arg>
+<arg>Load Registration Data</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<status status="PASS" start="2026-10-25T18:43:01.546922" elapsed="3.754273"/>
+</kw>
+<suite id="s1-s1-s1-s1" name="Test Register User" source="C:\robot_playwright\tests\ui\test_register_user.robot">
+<kw name="Load Registration Data" owner="data_fixtures" type="SETUP">
+<kw name="Get File" owner="OperatingSystem">
+<msg time="2026-10-25T18:43:05.362729" level="INFO" html="true">Getting file '&lt;a href="file://C:\robot_playwright\data\registration_data.yaml"&gt;C:\robot_playwright\data\registration_data.yaml&lt;/a&gt;'.</msg>
+<msg time="2026-10-25T18:43:05.363821" level="INFO">${yaml_string} = # Test Data for Registration Flow
+user:
+  password: "TestPassword123"
+  dob_day: 10
+  dob_month: 5
+  dob_year: 1995
+  first_name: "Test"
+  last_name: "User"
+  company: "TestCompany"
+  address1: "123 M...</msg>
+<var>${yaml_string}</var>
+<arg>${DATA_FILE}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<status status="PASS" start="2026-10-25T18:43:05.362314" elapsed="0.001850"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-10-25T18:43:05.368545" level="INFO">${yaml_data} = {'user': {'password': 'TestPassword123', 'dob_day': 10, 'dob_month': 5, 'dob_year': 1995, 'first_name': 'Test', 'last_name': 'User', 'company': 'TestCompany', 'address1': '123 Main Street', 'address2'...</msg>
+<var>${yaml_data}</var>
+<arg>yaml.safe_load($yaml_string)</arg>
+<arg>modules=yaml</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-10-25T18:43:05.365021" elapsed="0.004050"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-10-25T18:43:05.370247" level="INFO">${USER} = {'password': 'TestPassword123', 'dob_day': 10, 'dob_month': 5, 'dob_year': 1995, 'first_name': 'Test', 'last_name': 'User', 'company': 'TestCompany', 'address1': '123 Main Street', 'address2': 'Apt 4B...</msg>
+<arg>${USER}</arg>
+<arg>${yaml_data}[user]</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-10-25T18:43:05.369450" elapsed="0.001120"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Loaded User Data: ${USER}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-25T18:43:05.371292" elapsed="0.001290"/>
+</kw>
+<doc>Load registration data from YAML file</doc>
+<status status="PASS" start="2026-10-25T18:43:05.361636" elapsed="0.011322"/>
+</kw>
+<test id="s1-s1-s1-s1-t1" name="Register New User Successfully" line="17">
+<kw name="Open New Page" type="SETUP">
+<msg time="2026-10-25T18:43:05.395802" level="FAIL">No keyword with name 'Open New Page' found.</msg>
+<status status="FAIL" start="2026-10-25T18:43:05.391906" elapsed="0.011466">No keyword with name 'Open New Page' found.</status>
+</kw>
+<kw name="Close Page" owner="Browser" type="TEARDOWN">
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the ``page`` in ``context`` in ``browser``.</doc>
+<status status="PASS" start="2026-10-25T18:43:05.407611" elapsed="0.005298"/>
+</kw>
+<doc>Full registration flow with a random email</doc>
+<tag>e2e</tag>
+<tag>register</tag>
+<tag>regression</tag>
+<status status="FAIL" start="2026-10-25T18:43:05.373420" elapsed="0.040220">Setup failed:
+No keyword with name 'Open New Page' found.</status>
+</test>
+<doc>Test Case 1 - Register a new user on automationexercise.com</doc>
+<status status="FAIL" start="2026-10-25T18:43:05.301377" elapsed="0.131884"/>
+</suite>
+<kw name="Stop Browser Session" owner="browser_fixtures" type="TEARDOWN">
+<kw name="Close Browser" owner="Browser">
+<msg time="2026-10-25T18:43:05.766275" level="INFO">Closed all browsers</msg>
+<arg>ALL</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-10-25T18:43:05.449946" elapsed="0.316791"/>
+</kw>
+<doc>Closes the browser at the end of the suite.</doc>
+<status status="PASS" start="2026-10-25T18:43:05.449134" elapsed="0.317861"/>
+</kw>
+<doc>Global setup and teardown for all UI test suites.</doc>
+<status status="FAIL" start="2026-10-25T18:43:01.022085" elapsed="4.745044"/>
+</suite>
+<status status="FAIL" start="2026-10-25T18:43:01.001389" elapsed="4.783601"/>
+</suite>
+<status status="FAIL" start="2026-10-25T18:43:00.947931" elapsed="4.844206"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">e2e</stat>
+<stat pass="0" fail="1" skip="0">register</stat>
+<stat pass="0" fail="1" skip="0">regression</stat>
+</tag>
+<suite>
+<stat name="Robot Playwright" id="s1" pass="0" fail="1" skip="0">Robot Playwright</stat>
+<stat name="Tests" id="s1-s1" pass="0" fail="1" skip="0">Robot Playwright.Tests</stat>
+<stat name="Ui" id="s1-s1-s1" pass="0" fail="1" skip="0">Robot Playwright.Tests.Ui</stat>
+<stat name="Test Register User" id="s1-s1-s1-s1" pass="0" fail="1" skip="0">Robot Playwright.Tests.Ui.Test Register User</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

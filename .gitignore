@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+reports/
+*.log
+*.html
+.browser/
+node_modules/

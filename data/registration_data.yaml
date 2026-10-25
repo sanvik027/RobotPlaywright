@@ -1,0 +1,16 @@
+# Test Data for Registration Flow
+user:
+  password: "TestPassword123"
+  dob_day: 10
+  dob_month: 5
+  dob_year: 1995
+  first_name: "Test"
+  last_name: "User"
+  company: "TestCompany"
+  address1: "123 Main Street"
+  address2: "Apt 4B"
+  country: "India"
+  state: "Karnataka"
+  city: "Bangalore"
+  zipcode: "560001"
+  mobile: "9876543210"
